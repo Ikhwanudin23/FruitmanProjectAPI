@@ -31,7 +31,7 @@ class ForgotPasswordController extends Controller
     public function sendResetLinkEmail(Request $request)
     {
         $seller = User::where('email', $request->email)->first();
-        if($seller == null){
+        if(!$seller){
             return response()->json([
                 'messagge' => 'email tidak di temukan',
                 'status' => false,
