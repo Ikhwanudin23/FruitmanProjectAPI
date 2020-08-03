@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd9ae3f0-3869-4e6a-ae60-ab78890d7352" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth-seller/login.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth-seller/passwords/email.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth-seller/passwords/reset.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth-seller/register.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth-seller/verify.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth-user/login.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth-user/passwords/email.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth-user/passwords/reset.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth-user/register.blade.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/auth-user/verify.blade.php" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BackOffice/ReportController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/BackOffice/ReportController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/v1/Seller/Auth/ForgotPasswordController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/v1/Seller/Auth/ForgotPasswordController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/v1/Seller/Auth/ResetPasswordController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/v1/Seller/Auth/ResetPasswordController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/v1/User/Auth/ForgotPasswordController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/v1/User/Auth/ForgotPasswordController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/v1/User/Auth/ResetPasswordController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/v1/User/Auth/ResetPasswordController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Seller.php" afterPath="$PROJECT_DIR$/app/Seller.php" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" afterPath="$PROJECT_DIR$/app/User.php" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_13_085504_create_sellers_table.php" afterPath="$PROJECT_DIR$/database/migrations/2020_07_13_085504_create_sellers_table.php" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" afterPath="$PROJECT_DIR$/routes/api.php" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -62,21 +41,31 @@
       <file leaf-file-name="ResetPasswordController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/v1/User/Auth/ResetPasswordController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
+            <state relative-caret-position="544">
               <caret line="39" column="33" lean-forward="false" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RegisterController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/v1/User/Auth/RegisterController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
-              <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+            <state relative-caret-position="95">
+              <caret line="24" column="37" lean-forward="false" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
               <folding>
                 <element signature="e#53#66#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ForgotPasswordController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/v1/User/Auth/ForgotPasswordController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="39" column="9" lean-forward="true" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -300,8 +289,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -470,18 +459,19 @@
       <workItem from="1595925163367" duration="156000" />
       <workItem from="1596000865809" duration="2045000" />
       <workItem from="1596011297143" duration="6727000" />
-      <workItem from="1596032730324" duration="1230000" />
+      <workItem from="1596032730324" duration="1830000" />
+      <workItem from="1596426338496" duration="437000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138673000" />
+    <option name="totallyTimeSpent" value="139710000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31013617" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31467474" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -786,13 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/v1/User/Auth/ForgotPasswordController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/v1/Seller/Auth/ResetPasswordController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -875,7 +858,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/v1/User/Auth/ResetPasswordController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
+        <state relative-caret-position="544">
           <caret line="39" column="33" lean-forward="false" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
           <folding />
         </state>
@@ -883,11 +866,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/v1/User/Auth/RegisterController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+        <state relative-caret-position="95">
+          <caret line="24" column="37" lean-forward="false" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
           <folding>
             <element signature="e#53#66#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/v1/User/Auth/ForgotPasswordController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="39" column="9" lean-forward="true" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
