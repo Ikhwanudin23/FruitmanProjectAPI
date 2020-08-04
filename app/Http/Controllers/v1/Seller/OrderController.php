@@ -72,7 +72,7 @@ class OrderController extends Controller
             $sendNotif->sendNotificationFirebase($token, $message);
 
 
-            $orderOthers = Order::where('user_id', $order->user->id)
+            $orderOthers = Order::where('user_id', $order->user_id)
                 ->where('seller_id', $order->seller_id)
                 ->where('product_id', $order->product_id)
                 ->where('status', '1')->get();

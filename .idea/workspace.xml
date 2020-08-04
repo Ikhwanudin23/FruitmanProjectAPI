@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fd9ae3f0-3869-4e6a-ae60-ab78890d7352" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/v1/Seller/OrderController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/v1/Seller/OrderController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="OrderController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/v1/Seller/OrderController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="77" column="25" lean-forward="false" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
+            <state relative-caret-position="282">
+              <caret line="77" column="43" lean-forward="false" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -418,12 +417,12 @@
       <workItem from="1596011297143" duration="6727000" />
       <workItem from="1596032730324" duration="1830000" />
       <workItem from="1596426338496" duration="2690000" />
-      <workItem from="1596499656376" duration="2000000" />
+      <workItem from="1596499656376" duration="2450000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143963000" />
+    <option name="totallyTimeSpent" value="144413000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -817,8 +816,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/v1/Seller/OrderController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="77" column="25" lean-forward="false" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
+        <state relative-caret-position="282">
+          <caret line="77" column="43" lean-forward="false" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="43" />
           <folding />
         </state>
       </provider>
