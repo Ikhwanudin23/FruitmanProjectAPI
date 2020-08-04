@@ -83,25 +83,27 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($id);
 
-        if ($order->status == '2'){
-            return response()->json([
-                'message' => 'orderan sudah di konfirmasi sama penjual',
-                'status' => false
-            ]);
-        }else{
-            $order->update(['status' => '0']);
+        $order->update(['status' => '0']);
 
-            $token = $order->user->fcm_token;
-            $message = "Pesanan di batalkan oleh penjual";
-            $sendNotif = new FirebaseController();
-            $sendNotif->sendNotificationFirebase($token, $message);
+        $token = $order->user->fcm_token;
+        $message = "Pesanan di batalkan oleh penjual";
+        $sendNotif = new FirebaseController();
+        $sendNotif->sendNotificationFirebase($token, $message);
 
-            return response()->json([
-                'message' => 'successfully decline order',
-                'status' => true,
-                'data' => (object)[]
-            ]);
-        }
+        return response()->json([
+            'message' => 'successfully decline order',
+            'status' => true,
+            'data' => (object)[]
+        ]);
+
+//        if ($order->status == '2'){
+//            return response()->json([
+//                'message' => 'orderan sudah di konfirmasi sama penjual',
+//                'status' => false
+//            ]);
+//        }else{
+//
+//        }
 
 
     }
