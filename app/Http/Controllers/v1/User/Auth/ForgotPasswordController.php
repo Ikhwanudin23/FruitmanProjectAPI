@@ -14,12 +14,12 @@ class ForgotPasswordController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest:seller');
+        $this->middleware('guest:user');
     }
 
     public function broker()
     {
-        return Password::broker('sellers');
+        return Password::broker('users');
     }
 
     /**
@@ -30,8 +30,8 @@ class ForgotPasswordController extends Controller
      */
     public function sendResetLinkEmail(Request $request)
     {
-        $seller = User::where('email', $request->email)->first();
-        if(!$seller){
+        $user = User::where('email', $request->email)->first();
+        if($user == null){
             return response()->json([
                 'messagge' => 'email tidak di temukan',
                 'status' => false,

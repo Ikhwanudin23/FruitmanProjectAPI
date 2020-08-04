@@ -51,6 +51,6 @@ Route::group(['prefix' => 'seller'], function (){
 });
 
 Route::group(['prefix' => 'user'], function (){
-    Route::get('password/reset', 'v1\User\Auth\ResetPasswordController@showResetForm')->name('seller.password.request');
-    Route::post('password/reset', 'v1\User\Auth\ResetPasswordController@reset')->name('user.password.update');
+    Route::get('password/reset', 'v1\User\Auth\ResetPasswordController@showResetForm')->name('buyer.password.request');
+    Route::post('password/reset', 'v1\User\Auth\ResetPasswordController@reset')->name('buyer.password.update');
 });
