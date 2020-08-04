@@ -31,11 +31,11 @@
             <form class="login100-form validate-form" method="POST" action="{{ route('admin.login.submit') }}">
                 @csrf
                 <div class="login100-form-avatar">
-                    <img src="{{asset('assets/AssetsLoginForm/images/avatar-01.jpg')}}" alt="AVATAR">
+                    <img src="" alt="AVATAR">
                 </div>
 
                 <span class="login100-form-title p-t-20 p-b-45">
-						John Doe
+						Fruitman Application Development
 					</span>
                 @if($message = Session::get('error'))
                     <div class="alert alert-danger alert-dismissible mb-2" role="alert">
