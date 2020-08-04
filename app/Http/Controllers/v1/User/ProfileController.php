@@ -6,6 +6,7 @@ use App\Http\Resources\User\UserResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
@@ -61,7 +62,7 @@ class ProfileController extends Controller
             $user = Auth::guard('api')->user();
             $user->name = $request->name;
             $user->address = $request->address;
-            $user->password = $request->password;
+            $user->password = Hash::make($request->password);
             $user->phone = $request->phone;
             $user->save();
             return response()->json([
