@@ -71,6 +71,16 @@ class OrderController extends Controller
             $sendNotif = new FirebaseController();
             $sendNotif->sendNotificationFirebase($token, $message);
 
+
+            $orderOthers = Order::where('user_id', $order->user->id)
+                ->where('seller_id', $order->seller_id)
+                ->where('product_id', $order->product_id)
+                ->where('status', '1')->get();
+
+            foreach ($orderOthers as $orderOther){
+                $orderOther->delete();
+            }
+
             return response()->json([
                 'message' => 'successfully confirmed order',
                 'status' => true,
