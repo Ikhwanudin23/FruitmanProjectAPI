@@ -18,4 +18,14 @@ class Product extends Model
         return $this->hasOne(Order::class, 'product_id', 'id');
     }
 
+    public function subDistrict()
+    {
+        return $this->belongsTo(SubDistrict::class, 'sub_district_id', 'id');
+    }
+
+    public function fruit()
+    {
+        return $this->belongsTo(Fruit::class, 'fruit_id', 'id');
+    }
+
 }

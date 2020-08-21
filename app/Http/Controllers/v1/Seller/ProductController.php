@@ -42,7 +42,6 @@ class ProductController extends Controller
         try {
 
             $validator = Validator::make($request->all(), [
-                'name' => 'required',
                 'price' => 'required|numeric',
             ]);
 
@@ -57,7 +56,8 @@ class ProductController extends Controller
 
             $product = Product::create([
                 'seller_id' => Auth::user()->id,
-                'name' => ucwords($request->name),
+                'fruit_id' => $request->fruit_id,
+                'sub_district_id' => $request->sub_district_id,
                 'address' => $request->address,
                 'description' => $request->description,
                 'price' => $request->price,
@@ -68,7 +68,7 @@ class ProductController extends Controller
             return response()->json([
                 'message' => 'success',
                 'status' => true,
-                'data' => new ProductResource($product)
+                'data' => (object)[]
             ]);
         } catch (\Exception $exception) {
             return response()->json([
@@ -84,7 +84,8 @@ class ProductController extends Controller
         try {
             $data = Product::findOrFail($id);
             $data->seller_id = Auth::user()->id;
-            $data->name = $request->name;
+            $data->fruit_id = $request->fruit_id;
+            $data->sub_district_id = $request->sub_district_id;
             $data->address = $request->address;
             $data->description = $request->description;
             $data->price = $request->price;

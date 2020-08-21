@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 //Route::get('verify/{id}', 'v1\VerificationEmailController@verify')->name('api.verification.verify');
 
@@ -58,7 +59,12 @@ Route::group(['prefix' => 'user'], function(){
     Route::post('profile/update/photo', 'v1\User\ProfileController@updatePhoto');
     Route::get('verify/{id}', 'v1\User\Auth\VerificationController@verify')->name('user.verification.verify');
 
+
+    Route::get('subdistrict', 'v1\User\SubDistrictController@index');
+    Route::get('fruit/{sub_district_id}', 'v1\User\FruitController@fetchFruitBySubDistrict');
+
     Route::get('product','v1\User\ProductController@index');
+    Route::post('product/search','v1\User\ProductController@allByCriteria');
     Route::get('product/{name}/search','v1\User\ProductController@search');
 
     Route::post('order/store','v1\User\OrderController@store');

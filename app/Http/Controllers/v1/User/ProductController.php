@@ -6,6 +6,7 @@ use App\Http\Resources\User\ProductResource;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Response;
 
 class ProductController extends Controller
 {
@@ -16,9 +17,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        try {
-
-            $products = Product::where('status', true)->get();
+        $products = Product::where('status', true)->get();
             $results = [];
             foreach ($products as $product) {
                 if (!$product->order || $product->order['status'] != '2') {
@@ -26,19 +25,27 @@ class ProductController extends Controller
                 }
             }
 
+        return Response::transform('succes', true, ProductResource::collection(collect($results)));
+    }
 
-            return response()->json([
-                'message' => 'success',
-                'status' => true,
-                'data' => ProductResource::collection(collect($results)),
-            ]);
+    public function allByCriteria(Request $request)
+    {
+        try {
+            $sub_district_id = $request->sub_district_id;
+            $fruit_id = $request->fruit_id;
+            $products = Product::where('status', true)
+            ->where('sub_district_id', $sub_district_id)
+            ->where('fruit_id', $fruit_id)->get();
+            $results = [];
+            foreach ($products as $product) {
+                if (!$product->order || $product->order['status'] != '2') {
+                    array_push($results, $product);
+                }
+            }
+            return Response::transform('succes', true, ProductResource::collection(collect($results)));
 
         } catch (\Exception $exception) {
-            return response()->json([
-                'message' => $exception->getMessage(),
-                'status' => false,
-                'data' => (object)[],
-            ]);
+            return Response::transform($exception->getMessage(), false, (object)[]);
         }
     }
 

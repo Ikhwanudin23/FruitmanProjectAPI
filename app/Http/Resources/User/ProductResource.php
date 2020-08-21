@@ -16,13 +16,14 @@ class ProductResource extends JsonResource
     {
         return [
             "id" => $this->id,
-            "name" => $this->name,
             "description" => $this->description,
             "image" => $this->image,
             "address" => $this->address,
             "price" => $this->price,
             "status" => $this->status,
             "seller" => new SellerResource($this->seller),
+            "fruit" => new FruitResource($this->fruit),
+            "sub_district" => new SubDistrictResource($this->subDistrict)
         ];
     }
 }
