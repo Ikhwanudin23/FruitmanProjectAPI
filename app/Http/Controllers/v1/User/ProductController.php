@@ -28,6 +28,20 @@ class ProductController extends Controller
         return Response::transform('succes', true, ProductResource::collection(collect($results)));
     }
 
+    public function fetchProductBySubDistrict($sub_district_id)
+    {
+        $products = Product::where('status', true)
+        ->where('sub_district_id', $sub_district_id)->get();
+            $results = [];
+            foreach ($products as $product) {
+                if (!$product->order || $product->order['status'] != '2') {
+                    array_push($results, $product);
+                }
+            }
+
+        return Response::transform('succes', true, ProductResource::collection(collect($results)));
+    }
+
     public function allByCriteria(Request $request)
     {
         try {

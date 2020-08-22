@@ -64,6 +64,7 @@ Route::group(['prefix' => 'user'], function(){
     Route::get('fruit/{sub_district_id}', 'v1\User\FruitController@fetchFruitBySubDistrict');
 
     Route::get('product','v1\User\ProductController@index');
+    Route::get('product/{sub_district_id}','v1\User\ProductController@fetchProductBySubDistrict');
     Route::post('product/search','v1\User\ProductController@allByCriteria');
     Route::get('product/{name}/search','v1\User\ProductController@search');
 
