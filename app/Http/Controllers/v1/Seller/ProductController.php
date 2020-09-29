@@ -62,6 +62,8 @@ class ProductController extends Controller
                 'description' => $request->description,
                 'price' => $request->price,
                 'image' =>  Storage::disk('s3')->url($filepath, $filename),
+                "latitude" => $request->lat,
+                "longitude" => $request->lng,
                 'status' => true
             ]);
 
@@ -89,6 +91,8 @@ class ProductController extends Controller
             $data->address = $request->address;
             $data->description = $request->description;
             $data->price = $request->price;
+            $data->latitude = $request->lat;
+            $data->longitude = $request->lng;
             $data->update();
 
             return response()->json([

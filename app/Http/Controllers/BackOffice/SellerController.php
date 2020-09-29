@@ -17,5 +17,4 @@ class SellerController extends Controller
         $datas = Seller::all();
         return view('pages.seller', compact('datas'));
     }
-
 }

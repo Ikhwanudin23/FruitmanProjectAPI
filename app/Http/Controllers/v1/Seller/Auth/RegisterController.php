@@ -20,7 +20,6 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         try{
-
             $validator = Validator::make($request->all(),[
                 'name' => 'required',
                 'email' => 'required|unique:sellers',
@@ -29,7 +28,10 @@ class RegisterController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return response()->json(['message' => $validator->errors(), 'status' => false, 'data' => (object)[]]);
+                return response()->json([
+                    'message' => $validator->errors(),
+                    'status' => false,
+                    'data' => (object)[]]);
             }
 
             $seller = new Seller();
@@ -42,7 +44,6 @@ class RegisterController extends Controller
             $seller->save();
             $seller->sendApiEmailVerificationNotification();
             $message = "Cek Email Anda, Verifikasi Dahulu";
-
 
             return response()->json([
                 'message' => $message,
