@@ -22,6 +22,8 @@ class ProductResource extends JsonResource
             "address" => $this->address,
             "price" => $this->price,
             "status" => $this->status,
+            "latitude" => $this->latitude,
+            "longitude" => $this->longitude,
             //"user" => new SellerResource($this->user),
         ];
     }
