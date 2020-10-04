@@ -46,6 +46,9 @@ Route::group(['prefix' => 'seller'], function(){
     Route::get('order/{id}/confirmed','v1\Seller\OrderController@confirmed');
     Route::get('order/{id}/completed', 'v1\Seller\OrderController@completed');
 
+    Route::get('subdistrict', 'v1\Seller\SubdistrictController@index');
+    Route::get('fruit', 'v1\Seller\FruitController@index');
+
 });
 
 //user
