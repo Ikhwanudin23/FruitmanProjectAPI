@@ -56,6 +56,7 @@ class ProductController extends Controller
 
             $product = Product::create([
                 'seller_id' => Auth::user()->id,
+                
                 'fruit_id' => $request->fruit_id,
                 'sub_district_id' => $request->sub_district_id,
                 'address' => $request->address,
