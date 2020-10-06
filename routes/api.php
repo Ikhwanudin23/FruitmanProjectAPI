@@ -29,6 +29,7 @@ Route::group(['prefix' => 'seller'], function(){
     Route::get('profile', 'v1\Seller\ProfileController@profile');
     Route::post('profile/update', 'v1\Seller\ProfileController@updateProfile');
     Route::post('profile/update/photo', 'v1\Seller\ProfileController@updatePhoto');
+    Route::post('profile/update/password', 'v1\Seller\ProfileController@updatePassword');
     Route::get('verify/{id}', 'v1\Seller\Auth\VerificationController@verify')->name('seller.verification.verify');
 
     Route::post('product/store','v1\Seller\ProductController@store');
@@ -60,6 +61,7 @@ Route::group(['prefix' => 'user'], function(){
     Route::get('profile', 'v1\User\ProfileController@profile');
     Route::post('profile/update', 'v1\User\ProfileController@updateProfile');
     Route::post('profile/update/photo', 'v1\User\ProfileController@updatePhoto');
+    Route::post('profile/update/password', 'v1\User\ProfileController@updatePassword');
     Route::get('verify/{id}', 'v1\User\Auth\VerificationController@verify')->name('user.verification.verify');
 
 

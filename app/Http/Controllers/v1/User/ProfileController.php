@@ -45,10 +45,21 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function updatePassword(Request $request)
+    {
+            $user = Auth::guard('api')->user();
+            $user->password = Hash::make($request->password);
+            $user->save();
+            return response()->json([
+                'message' => 'successfully update profile',
+                'status' => true,
+                'data' => (object)[]
+            ]);
+    }
+
     public function updateProfile(Request $request)
     {
-        if ($request->password == null || empty($request->password)){
-            $user = Auth::guard('api')->user();
+        $user = Auth::guard('api')->user();
             $user->name = $request->name;
             $user->address = $request->address;
             $user->phone = $request->phone;
@@ -56,20 +67,7 @@ class ProfileController extends Controller
             return response()->json([
                 'message' => 'successfully update profile',
                 'status' => true,
-                'data' => $user
+                'data' => (object)[]
             ]);
-        }else{
-            $user = Auth::guard('api')->user();
-            $user->name = $request->name;
-            $user->address = $request->address;
-            $user->password = Hash::make($request->password);
-            $user->phone = $request->phone;
-            $user->save();
-            return response()->json([
-                'message' => 'successfully update profile',
-                'status' => true,
-                'data' => $user
-            ]);
-        }
     }
 }
