@@ -44,7 +44,7 @@
 <body>
 
 <center>
-    <font size="3"><b>Laporan Data Histori Transaksi Sudah Selesai Pengepul dan Penebas</b></font>
+    <font size="3"><b>Laporan Data Histori Transaksi Sudah Selesai Penebas dan Penjual</b></font>
     <br>
     <font size="3"><b> </b></font>
 </center>
@@ -55,8 +55,8 @@
     <thead>
     <tr>
         <th>No</th>
-        <th>Nama Pengepul</th>
-        <th>Nama Penebas </th>
+        <th>Nama Penebas</th>
+        <th>Nama Penjual </th>
         <th>Nama produk</th>
         <th>Harga produk</th>
         <th>Harga Sepakat</th>
@@ -69,7 +69,7 @@
             <td>{{$loop->iteration}}</td>
             <td>{{$data->user->name}}</td>
             <td>{{$data->seller->name}}</td>
-            <td>{{$data->product->name}}</td>
+            <td>{{$data->product->fruit->name}}</td>
             <td>{{$data->product->price}}</td>
             <td>{{$data->offer_price}}</td>
         </tr>

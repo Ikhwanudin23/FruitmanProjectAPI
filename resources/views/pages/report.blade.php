@@ -13,7 +13,7 @@
     </div>
     <div class="card">
         <div class="card-body printableArea">
-            <h4 class="card-title">Daftar Penjual Buah</h4>
+            <h4 class="card-title">Daftar Transaksi Selesai</h4>
             <h6 class="card-subtitle"><b>FruitMan Application Development</b></h6>
             <a href="{{route('report.print')}}" class="btn btn-default btn-outline"> <span><i class="fa fa-print"></i> </span> Print </a>
             <div class="table-responsive m-t-10">
@@ -23,8 +23,8 @@
                         <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Pengepul</th>
-                            <th>Nama Penebas </th>
+                            <th>Nama Penebas</th>
+                            <th>Nama Penjual </th>
                             <th>Nama produk</th>
                             <th>Harga produk</th>
                             <th>Harga Sepakat</th>
@@ -36,7 +36,7 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$data->user->name}}</td>
                                 <td>{{$data->seller->name}}</td>
-                                <td>{{$data->product->name}}</td>
+                                <td>{{$data->product->fruit->name}}</td>
                                 <td>{{$data->product->price}}</td>
                                 <td>{{$data->offer_price}}</td>
                             </tr>

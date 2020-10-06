@@ -13,7 +13,7 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Daftar Penjual Buah</h4>
+            <h4 class="card-title">Daftar Penebas Buah</h4>
             <h6 class="card-subtitle"><b>FruitMan Application Development</b></h6>
             <div class="table-responsive m-t-10">
                 <div id="myTable_wrapper" class="dataTables_wrapper no-footer">

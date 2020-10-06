@@ -23,14 +23,14 @@
                         <li><a class="has-arrow waves-effect waves-dark" href="{{route('index')}}" aria-expanded="false"><i class="mdi mdi-clipboard-check"></i>&nbsp;&nbsp;&nbsp;Dashboard</a></li>
                     </ul>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Daftar Pengepul </span></a>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Daftar Penebas </span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a class="has-arrow waves-effect waves-dark" href="{{route('userlist.index')}}" aria-expanded="false"><i class="mdi mdi-account-card-details"></i>&nbsp;&nbsp;&nbsp;Profil User Pengepul</a></li>
+                        <li><a class="has-arrow waves-effect waves-dark" href="{{route('userlist.index')}}" aria-expanded="false"><i class="mdi mdi-account-card-details"></i>&nbsp;&nbsp;&nbsp;Profil User Penebas</a></li>
                     </ul>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Daftar Penebas</span></a>
+                <li> <a class="has-arrow waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Daftar Penjual</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a class="has-arrow waves-effect waves-dark" href="{{route('sellerlist.index')}}" aria-expanded="false"><i class="mdi mdi-account-card-details"></i>&nbsp;&nbsp;&nbsp;Profil User Penebas</a></li>
+                        <li><a class="has-arrow waves-effect waves-dark" href="{{route('sellerlist.index')}}" aria-expanded="false"><i class="mdi mdi-account-card-details"></i>&nbsp;&nbsp;&nbsp;Profil User Penjual</a></li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Laporan</span></a>
