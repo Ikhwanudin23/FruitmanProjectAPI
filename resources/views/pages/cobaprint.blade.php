@@ -69,7 +69,7 @@
             <td>{{$loop->iteration}}</td>
             <td>{{$data->user->name}}</td>
             <td>{{$data->seller->name}}</td>
-            <td>{{$data->product->fruit['name']}}</td>
+            <td>{{$data->product->fruit->name}}</td>
             <td>{{$data->product->price}}</td>
             <td>{{$data->offer_price}}</td>
         </tr>
