@@ -6,6 +6,7 @@ use App\Http\Resources\Seller\ProductResource;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\ProductImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -21,12 +22,12 @@ class ProductController extends Controller
     public function show()
     {
         try {
-            $fruits = Product::where('seller_id', Auth::user()->id)->get();
+            $products = Product::where('seller_id', Auth::user()->id)->get();
 
             return response()->json([
                 'message' => 'success',
                 'status' => true,
-                'data' => ProductResource::collection(collect($fruits)),
+                'data' => ProductResource::collection(collect($products)),
             ]);
         } catch (\Exception $exception) {
             return response()->json([
@@ -49,30 +50,36 @@ class ProductController extends Controller
                 return response()->json(['message' => $validator->errors(), 'status' => false, 'data' => (object)[]]);
             }
 
-            $photo = $request->file('image');
-            $filename = time() . '.' . $photo->getClientOriginalExtension();
-            $filepath = 'product/' . $filename;
-            Storage::disk('s3')->put($filepath, file_get_contents($photo));
-
             $product = Product::create([
                 'seller_id' => Auth::user()->id,
-                
                 'fruit_id' => $request->fruit_id,
                 'sub_district_id' => $request->sub_district_id,
                 'address' => $request->address,
                 'description' => $request->description,
                 'price' => $request->price,
-                'image' =>  Storage::disk('s3')->url($filepath, $filename),
                 "latitude" => $request->lat,
                 "longitude" => $request->lng,
                 'status' => true
             ]);
+
+            $images = $request->images;
+            foreach ($images as $image){
+                $filename = time() . '.' . $image->getClientOriginalExtension();
+                $filepath = 'product/' . $filename;
+                Storage::disk('s3')->put($filepath, file_get_contents($image));
+
+                ProductImage::create([
+                    'product_id' => $product->id,
+                    'image' => Storage::disk('s3')->url($filepath, $filename),
+                ]);
+            }
 
             return response()->json([
                 'message' => 'success',
                 'status' => true,
                 'data' => (object)[]
             ]);
+
         } catch (\Exception $exception) {
             return response()->json([
                 'message' => $exception->getMessage(),
@@ -112,14 +119,15 @@ class ProductController extends Controller
 
     public function updatePhoto(Request $request, $id)
     {
-        $photo = $request->file('image');
-        $filename = time() . '.' . $photo->getClientOriginalExtension();
-        $filepath = 'product/' . $filename;
-        Storage::disk('s3')->put($filepath, file_get_contents($photo));
+        foreach ($request->images as $image) {
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $filepath = 'product/' . $filename;
+            Storage::disk('s3')->put($filepath, file_get_contents($image));
 
-        $product = Product::findOrFail($id);
-        $product->image = Storage::disk('s3')->url($filepath, $filename);
-        $product->update();
+            ProductImage::where('product_id', $id)->update([
+                'image' => Storage::disk('s3')->url($filepath, $filename)
+            ]);
+        }
 
         return response()->json([
             'message' => 'success update product',

@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->integer('seller_id')->unsigned();
             $table->text('description')->nullable();
             $table->integer('price');
-            $table->string('image')->default('assets/product/default.png');
+            //$table->string('image')->default('assets/product/default.png');
             $table->text('address')->nullable();
             $table->boolean('status')->default(true);
 
