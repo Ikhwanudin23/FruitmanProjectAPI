@@ -29,6 +29,8 @@ class LoginController extends Controller
 
         if (Auth::guard('web')->attempt($credential)){
             $user = Auth::guard('web')->user();
+            $user->fcm_token = $request->fcm_token;
+            $user->update();
             if ($user->email_verified_at != null){
                 return response()->json([
                     'message' => 'login berhasil',

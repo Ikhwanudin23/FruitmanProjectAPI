@@ -80,6 +80,12 @@ class ProductController extends Controller
                 'data' => (object)[]
             ]);
 
+            return response()->json([
+                'message' => 'success',
+                'status' => true,
+                'data' => (object)[]
+            ]);
+
         } catch (\Exception $exception) {
             return response()->json([
                 'message' => $exception->getMessage(),
