@@ -6,7 +6,9 @@ use App\Http\Resources\Seller\ProductResource;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Order;
 use App\ProductImage;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -22,13 +24,15 @@ class ProductController extends Controller
     public function show()
     {
         try {
-            $products = Product::where('seller_id', Auth::user()->id)->get();
+            $products = Product::where('seller_id', Auth::guard('seller-api')->user()->id)->get();
             $results = [];
             foreach ($products as $product){
                 if (!$product->order || $product->order['status'] != '2') {
                     array_push($results, $product);
                 }
             }
+
+            $this->checkFakeOrder();
 
             return response()->json([
                 'message' => 'success',
@@ -41,6 +45,20 @@ class ProductController extends Controller
                 'status' => false,
                 'data' => (object)[],
             ]);
+        }
+    }
+
+    public function checkFakeOrder()
+    {
+        $orders = Order::where('seller_id', Auth::guard('seller-api')->user()->id)
+        ->where('status', '2')
+        ->where('arrive', false)->get();
+
+        foreach ($orders as $order) {
+            $diffCarbon = Carbon::now()->diff($order->created_at);
+            if ($diffCarbon->d > 0) {
+                $order->delete();
+            }
         }
     }
 

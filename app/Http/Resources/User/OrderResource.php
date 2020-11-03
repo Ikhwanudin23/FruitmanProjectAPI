@@ -22,7 +22,8 @@ class OrderResource extends JsonResource
             "offer_price" => $this->offer_price,
             "status" => $this->status,
             "arrive" => $this->arrive == "1" ? true : false,
-            "completed" => $this->completed == "1" ? true : false
+            "completed" => $this->completed == "1" ? true : false,
+            "updated_at" => Carbon::parse($this->updated_at)->format('Y m d, H:i')
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Seller;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class OrderResource extends JsonResource
@@ -22,6 +23,7 @@ class OrderResource extends JsonResource
             "status" => $this->status,
             "arrive" => $this->arrive  == "1" ? true : false,
             "completed" => $this->completed  == "1" ? true : false,
+            "updated_at" => Carbon::parse($this->updated_at)->format('Y m d, H:i')
         ];
     }
 }
