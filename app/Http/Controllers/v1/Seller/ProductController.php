@@ -97,8 +97,8 @@ class ProductController extends Controller
             ]);
 
             $images = $request->images;
-            foreach ($images as $image){
-                $filename = time() . '.' . $image->getClientOriginalExtension();
+            foreach ($images as $key => $image){
+                $filename = time() . $key . '.' . $image->getClientOriginalExtension();
                 $filepath = 'product/' . $filename;
                 Storage::disk('s3')->put($filepath, file_get_contents($image));
 
@@ -134,13 +134,13 @@ class ProductController extends Controller
         try {
             $data = Product::findOrFail($id);
             $data->seller_id = Auth::user()->id;
-            $data->fruit_id = $request->fruit_id;
-            $data->sub_district_id = $request->sub_district_id;
+            $data->fruit_id = $request->fruit_id ?? $data->fruit_id;
+            $data->sub_district_id = $request->sub_district_id ?? $data->sub_district_id;
             $data->address = $request->address;
             $data->description = $request->description;
             $data->price = $request->price;
-            $data->latitude = $request->lat == null ? $data->latitude : $request->lat;
-            $data->longitude = $request->lng == null ? $data->longitude : $request->lng;
+            $data->latitude = $request->lat ?? $data->latitude;
+            $data->longitude = $request->lng ?? $data->longitude;
             $data->update();
 
             return response()->json([
