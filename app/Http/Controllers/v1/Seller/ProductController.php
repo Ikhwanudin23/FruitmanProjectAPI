@@ -21,6 +21,16 @@ class ProductController extends Controller
         $this->middleware('auth:seller-api');
     }
 
+    public function find($id)
+    {
+        $product = Product::findOrFail($id);
+        return response()->json([
+            'message' => 'success',
+            'status' => true,
+            'data' => new ProductResource($product),
+        ]);
+    }
+
     public function show()
     {
         try {
