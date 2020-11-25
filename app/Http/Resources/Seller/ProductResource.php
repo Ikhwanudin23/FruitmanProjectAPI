@@ -23,7 +23,9 @@ class ProductResource extends JsonResource
             "status" => $this->status,
             "latitude" => $this->latitude,
             "longitude" => $this->longitude,
-            "images" => $this->images,
+            "fruit_id" => $this->fruit_id,
+            "sub_district_id" => $this->sub_district_id,
+            "images" => ImageProductResource::collection($this->images),
             //"user" => new SellerResource($this->user),
         ];
     }

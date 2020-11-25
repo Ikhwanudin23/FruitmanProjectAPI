@@ -139,8 +139,8 @@ class ProductController extends Controller
             $data->address = $request->address;
             $data->description = $request->description;
             $data->price = $request->price;
-            $data->latitude = $request->lat;
-            $data->longitude = $request->lng;
+            $data->latitude = $request->lat == null ? $data->latitude : $request->lat;
+            $data->longitude = $request->lng == null ? $data->longitude : $request->lng;
             $data->update();
 
             return response()->json([
