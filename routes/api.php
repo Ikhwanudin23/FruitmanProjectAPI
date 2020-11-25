@@ -36,7 +36,7 @@ Route::group(['prefix' => 'seller'], function(){
     Route::post('product/{id}/update','v1\Seller\ProductController@update');
     Route::post('product/{id}/update/photo','v1\Seller\ProductController@updatePhoto');
     Route::get('product/{id}/delete','v1\Seller\ProductController@delete');
-    Route::get('product/{id}','v1\Seller\ProductController@find');
+    Route::get('product/{id}/find','v1\Seller\ProductController@find');
     Route::get('product/show','v1\Seller\ProductController@show');
 
     Route::get('order/orderin','v1\Seller\OrderController@sellerOrderIn');
