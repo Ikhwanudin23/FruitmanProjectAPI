@@ -25,6 +25,7 @@ class SellerResource extends JsonResource
             "image"     => $this->image,
             "address"   => $this->address,
             "phone"     => $this->phone,
+            "api_token" => $this->api_token,
             "status"    => $this->status,
             "premium"   => $premium,
             "overload"  => $overload,
