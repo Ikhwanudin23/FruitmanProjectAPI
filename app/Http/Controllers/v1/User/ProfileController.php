@@ -21,7 +21,7 @@ class ProfileController extends Controller
     {
         $user = Auth::guard('api')->user();
         $photo = $request->file('image');
-        $filename = time().'-'.$user. '.' . $photo->getClientOriginalExtension();
+        $filename = time().'-'.$user->name. '.' . $photo->getClientOriginalExtension();
         $filepath = 'premium/' . $filename;
         Storage::disk('s3')->put($filepath, file_get_contents($photo));
 
