@@ -16,7 +16,7 @@ class SellerResource extends JsonResource
     {
 
         $premium = $this->premium ? true : false;
-        $overload = count($this->products) > 2 ? true : false;
+        $overload = count($this->products) >= 2 ? true : false;
 
         return [
             "id"        => $this->id,

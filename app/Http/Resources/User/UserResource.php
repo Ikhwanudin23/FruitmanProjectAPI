@@ -17,7 +17,7 @@ class UserResource extends JsonResource
 
         
         $premium = $this->premium ? true : false;
-        $overload = count($this->orders) > 2 ? true : false;
+        $overload = count($this->orders) >= 2 ? true : false;
 
         return [
             "id"        => $this->id,
