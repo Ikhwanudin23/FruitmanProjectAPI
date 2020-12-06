@@ -14,13 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 
-//Route::get('verify/{id}', 'v1\VerificationEmailController@verify')->name('api.verification.verify');
+Route::get('bank', 'v1\BankController@fetchBank');
 
-//seller
 Route::group(['prefix' => 'seller'], function(){
     Route::post('register', 'v1\Seller\Auth\RegisterController@register');
     Route::post('login', 'v1\Seller\Auth\LoginController@login');
@@ -31,6 +27,8 @@ Route::group(['prefix' => 'seller'], function(){
     Route::post('profile/update/photo', 'v1\Seller\ProfileController@updatePhoto');
     Route::post('profile/update/password', 'v1\Seller\ProfileController@updatePassword');
     Route::get('verify/{id}', 'v1\Seller\Auth\VerificationController@verify')->name('seller.verification.verify');
+
+    Route::post('premium', 'v1\Seller\ProfileController@premium');
 
     Route::post('product/store','v1\Seller\ProductController@store');
     Route::post('product/{id}/update','v1\Seller\ProductController@update');
@@ -65,6 +63,7 @@ Route::group(['prefix' => 'user'], function(){
     Route::post('profile/update/password', 'v1\User\ProfileController@updatePassword');
     Route::get('verify/{id}', 'v1\User\Auth\VerificationController@verify')->name('user.verification.verify');
 
+    Route::post('premium', 'v1\User\ProfileController@premium');
 
     Route::get('subdistrict', 'v1\User\SubDistrictController@index');
     Route::get('fruit/{sub_district_id}', 'v1\User\FruitController@fetchFruitBySubDistrict');

@@ -33,4 +33,14 @@ class Seller extends Authenticatable implements MustVerifyEmail
     {
         $this->notify(new SellerResetPasswordNotification($token));
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'seller_id', 'id');
+    }
+
+    public function premium()
+    {
+        return $this->hasOne(Premium::class, 'seller_id', 'id');
+    }
 }

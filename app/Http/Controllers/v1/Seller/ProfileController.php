@@ -5,6 +5,7 @@ namespace App\Http\Controllers\v1\Seller;
 use App\Http\Resources\User\SellerResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Premium;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -14,6 +15,26 @@ class ProfileController extends Controller
     public function __construct()
     {
         $this->middleware('auth:seller-api');
+    }
+
+    public function premium(Request $request)
+    {
+        $user = Auth::guard('seller-api')->user();
+        $photo = $request->file('image');
+        $filename = time().'-'.$user. '.' . $photo->getClientOriginalExtension();
+        $filepath = 'premium/' . $filename;
+        Storage::disk('s3')->put($filepath, file_get_contents($photo));
+
+        Premium::create([
+            'seller_id' => $user->id,
+            'image' => Storage::disk('s3')->url($filepath, $filename)
+        ]);
+
+        return response()->json([
+            'message' => 'success',
+            'status' => true,
+            'data' => (object)[]
+        ]);
     }
 
     public function profile()

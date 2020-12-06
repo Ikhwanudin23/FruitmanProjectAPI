@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\v1\Seller\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Seller\SellerResource;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +36,7 @@ class LoginController extends Controller
                 return response()->json([
                     'message' => 'login berhasil',
                     'status' => true,
-                    'data' => $user
+                    'data' => new SellerResource($user)
                 ]);
             }else{
                 return response()->json([
