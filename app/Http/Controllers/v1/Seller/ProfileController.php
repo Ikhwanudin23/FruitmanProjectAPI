@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\v1\Seller;
 
+use App\Admin;
 use App\Http\Resources\User\SellerResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,11 +31,26 @@ class ProfileController extends Controller
             'image' => Storage::disk('s3')->url($filepath, $filename)
         ]);
 
+        $this->sendEmail($user);
+
         return response()->json([
             'message' => 'success',
             'status' => true,
             'data' => (object)[]
         ]);
+    }
+
+    private function sendEmail($user)
+    {
+        $details = [
+            'greeting' => 'Hi Admin',
+            'body' => $user->name .' ingin upgrade menjadi premium',
+        ];
+
+        $admin = Admin::first();
+        $admin->premiumSendEmail($details);
+
+        return true;
     }
 
     public function profile()

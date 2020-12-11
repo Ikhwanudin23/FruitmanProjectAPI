@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\PremiumNotification;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -38,4 +39,9 @@ class Admin extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function premiumSendEmail($details)
+    {
+        $this->notify(new PremiumNotification($details));
+    }
 }

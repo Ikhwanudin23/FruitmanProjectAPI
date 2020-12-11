@@ -40,6 +40,11 @@ Route::group(['prefix' => 'admin'], function (){
     Route::get('print', 'BackOffice\ReportController@print')->name('report.print');
 
 
+    Route::get('premium', 'BackOffice\PremiumController@index')->name('premium.index');
+    Route::get('premium/{id}/confirmed', 'BackOffice\PremiumController@confirmed')->name('premium.confirmed');
+    Route::get('premium/decline', 'BackOffice\PremiumController@decline')->name('premium.decline');
+
+
     Route::get('getlogin', 'Admin\AuthController@getLogin')->name('admin.getLogin');
     Route::post('login', 'Admin\AuthController@login')->name('admin.login.submit');
 });
