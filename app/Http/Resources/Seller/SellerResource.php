@@ -15,8 +15,8 @@ class SellerResource extends JsonResource
     public function toArray($request)
     {
 
-        $premium = $this->premium ? true : false;
-        $overload = count($this->products) >= 2 ? true : false;
+        $premium = false;
+        $overload = false;
 
         return [
             "id"        => $this->id,
