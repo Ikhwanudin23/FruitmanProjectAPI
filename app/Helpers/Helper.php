@@ -12,6 +12,6 @@ class Helper
         $new_name = $only_name[0] . '-' . \Carbon\Carbon::now()->format('ymdHis') . '.' . $extension;
         $path = public_path('/product');
         $file->move($path, $new_name);
-        return 'product/'.$new_name;
+        return 'public/product/'.$new_name;
     }
 }
