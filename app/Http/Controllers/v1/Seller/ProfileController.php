@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers\v1\Seller;
 
-use App\Admin;
-use App\Helper;
-use App\Premium;
+use App\Helpers\Helper;
+use App\{Admin, Premium};
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\User\SellerResource;
+use Illuminate\Support\Facades\{Auth, Hash, Storage};
 
 class ProfileController extends Controller
 {

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\v1\User;
 
 use App\Admin;
-use App\Helper;
 use App\Premium;
 use Notification;
+use App\Helpers\Helper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Helpers;
 
 class Helper
 {
@@ -11,7 +11,7 @@ class Helper
         $extension = $file->getClientOriginalExtension();
         $new_name = $only_name[0] . '-' . \Carbon\Carbon::now()->format('ymdHis') . '.' . $extension;
         $destination = 'product';
-        $file->storeAs($destination, $new_name);
-        return $new_name;
+        $path = $file->storeAs($destination, $new_name);
+        return $path;
     }
 }

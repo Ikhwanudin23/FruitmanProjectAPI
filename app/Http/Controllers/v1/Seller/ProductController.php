@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\v1\Seller;
 
-use App\Helper;
-use App\Http\Resources\Seller\ProductResource;
-use App\Product;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Order;
-use App\ProductImage;
+use App\Product;
 use Carbon\Carbon;
+use App\ProductImage;
+use App\Helpers\Helper;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\Seller\ProductResource;
 
 class ProductController extends Controller
 {
@@ -75,8 +76,8 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        DB::beginTransaction();
         try {
-
             $validator = Validator::make($request->all(), [
                 'price' => 'required|numeric',
             ]);
@@ -110,13 +111,7 @@ class ProductController extends Controller
                     'image' => $uploadFile,
                 ]);
             }
-
-            return response()->json([
-                'message' => 'success',
-                'status' => true,
-                'data' => (object)[]
-            ]);
-
+            DB::commit();
             return response()->json([
                 'message' => 'success',
                 'status' => true,
@@ -124,6 +119,7 @@ class ProductController extends Controller
             ]);
 
         } catch (\Exception $exception) {
+            DB::rollBack();
             return response()->json([
                 'message' => $exception->getMessage(),
                 'status' => false,
