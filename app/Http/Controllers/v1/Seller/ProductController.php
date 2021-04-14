@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\v1\Seller;
 
+use App\Helper;
 use App\Http\Resources\Seller\ProductResource;
 use App\Product;
 use Illuminate\Http\Request;
@@ -98,13 +99,15 @@ class ProductController extends Controller
 
             $images = $request->images;
             foreach ($images as $key => $image){
-                $filename = time() . $key . '.' . $image->getClientOriginalExtension();
-                $filepath = 'product/' . $filename;
-                Storage::disk('s3')->put($filepath, file_get_contents($image));
+                $uploadFile = Helper::uploadFile($image);
+                // $filename = time() . $key . '.' . $image->getClientOriginalExtension();
+
+                // $filepath = 'product/' . $filename;
+                // Storage::disk('s3')->put($filepath, file_get_contents($image));
 
                 ProductImage::create([
                     'product_id' => $product->id,
-                    'image' => Storage::disk('s3')->url($filepath, $filename),
+                    'image' => $uploadFile,
                 ]);
             }
 
@@ -160,12 +163,14 @@ class ProductController extends Controller
     public function updatePhoto(Request $request, $id)
     {
         foreach ($request->images as $image) {
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            $filepath = 'product/' . $filename;
-            Storage::disk('s3')->put($filepath, file_get_contents($image));
+            $uploadFile = Helper::uploadFile($image);
+            // $filename = time() . '.' . $image->getClientOriginalExtension();
+            // $filepath = 'product/' . $filename;
+            // Storage::disk('s3')->put($filepath, file_get_contents($image));
 
             ProductImage::where('product_id', $id)->update([
-                'image' => Storage::disk('s3')->url($filepath, $filename)
+                //'image' => Storage::disk('s3')->url($filepath, $filename)
+                'image' => $uploadFile
             ]);
         }
 

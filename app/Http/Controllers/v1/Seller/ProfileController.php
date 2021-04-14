@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\v1\Seller;
 
 use App\Admin;
-use App\Http\Resources\User\SellerResource;
+use App\Helper;
+use App\Premium;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Premium;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Resources\User\SellerResource;
 
 class ProfileController extends Controller
 {
@@ -67,12 +68,14 @@ class ProfileController extends Controller
     public function updatePhoto(Request $request)
     {
         $photo = $request->file('image');
-        $filename = time() . '.' . $photo->getClientOriginalExtension();
-        $filepath = 'product/' . $filename;
-        Storage::disk('s3')->put($filepath, file_get_contents($photo));
+        $uploadFile = Helper::uploadFile($photo);
+        // $filename = time() . '.' . $photo->getClientOriginalExtension();
+        // $filepath = 'product/' . $filename;
+        // Storage::disk('s3')->put($filepath, file_get_contents($photo));
 
         $user = Auth::guard('seller-api')->user();
-        $user->image = Storage::disk('s3')->url($filepath, $filename);
+        //$user->image = Storage::disk('s3')->url($filepath, $filename);
+        $user->image = $uploadFile;
         $user->save();
 
         return response()->json([

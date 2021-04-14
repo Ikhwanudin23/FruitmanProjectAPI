@@ -3,15 +3,16 @@
 namespace App\Http\Controllers\v1\User;
 
 use App\Admin;
-use App\Http\Resources\User\UserResource;
+use App\Helper;
+use App\Premium;
+use Notification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Notifications\PremiumNotification;
-use Notification;
-use App\Premium;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Resources\User\UserResource;
+use App\Notifications\PremiumNotification;
 
 class ProfileController extends Controller
 {
@@ -70,12 +71,13 @@ class ProfileController extends Controller
     public function updatePhoto(Request $request)
     {
         $photo = $request->file('image');
-        $filename = time() . '.' . $photo->getClientOriginalExtension();
-        $filepath = 'product/' . $filename;
-        Storage::disk('s3')->put($filepath, file_get_contents($photo));
+        $uploadFile = Helper::uploadFile($photo);
+        // $filename = time() . '.' . $photo->getClientOriginalExtension();
+        // $filepath = 'product/' . $filename;
+        // Storage::disk('s3')->put($filepath, file_get_contents($photo));
 
         $user = Auth::guard('api')->user();
-        $user->image = Storage::disk('s3')->url($filepath, $filename);
+        $user->image = $uploadFile;
         $user->update();
 
         return response()->json([
