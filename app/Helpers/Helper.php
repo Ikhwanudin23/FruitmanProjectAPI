@@ -10,8 +10,8 @@ class Helper
         $only_name = explode('.', $file_name);
         $extension = $file->getClientOriginalExtension();
         $new_name = $only_name[0] . '-' . \Carbon\Carbon::now()->format('ymdHis') . '.' . $extension;
-        $destination = 'public/product';
-        $path = $file->storeAs($destination, $new_name);
-        return $path;
+        $path = public_path('/product');
+        $file->move($path, $new_name);
+        return 'product/'.$new_name;
     }
 }
