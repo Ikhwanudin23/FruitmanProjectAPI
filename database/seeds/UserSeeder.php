@@ -3,6 +3,8 @@
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Faker\Factory;
+
 
 class UserSeeder extends Seeder
 {
@@ -13,12 +15,17 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'name' => 'udin',
-            'email' => 'udin@gmail.com',
-            'password' => Hash::make('12345678'),
-            'phone' => '1234',
-            'api_token' => 'token_udin'
-        ]);
+		$faker = Factory::create();
+		for ($i=0; $i < 3; $i++) { 
+			User::create([
+				'name' => $faker->name,
+			    'email' => $faker->unique()->safeEmail,
+			    'password' => Hash::make('password'),
+			    'phone' => $faker->unique()->phoneNumber,
+			    'api_token' => 'token_'.$faker->name,
+				'fcm_token' => 'fcm_token_'.$faker->name		
+			]);
+		}
+        
     }
 }

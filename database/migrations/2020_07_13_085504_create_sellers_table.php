@@ -20,7 +20,7 @@ class CreateSellersTable extends Migration
             $table->text('password');
             $table->string('image')->default('assets/upload/user/default.png')->nullable();
             $table->text('address','190')->nullable();
-            $table->string('phone','14')->nullable();
+            $table->string('phone')->nullable();
             $table->boolean('status')->default(true);
             $table->string('api_token')->unique();
             $table->rememberToken();
