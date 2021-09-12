@@ -16,7 +16,7 @@ class ReportController extends Controller
 	public function __construct()
     {
 
-        //$this->middleware("auth:api");
+        $this->middleware("auth:api");
     }
     public function index()
 	{
@@ -24,8 +24,8 @@ class ReportController extends Controller
 		FROM orders 
 		INNER JOIN products ON orders.product_id = products.id
 		INNER JOIN fruits on products.fruit_id = fruits.id
-		-- WHERE orders.user_id = ".Auth::id()." AND orders.status = '2' 
-		WHERE orders.user_id = 3 AND orders.status = '2' 
+		WHERE orders.user_id = ".Auth::id()." AND orders.status = '2' 
+		-- WHERE orders.user_id = 3 AND orders.status = '2' 
 		AND orders.arrive = true AND orders.completed = true
 		GROUP BY fruits.name, MONTH(orders.created_at)
 		ORDER BY fruits.name, MONTH(orders.created_at)");
